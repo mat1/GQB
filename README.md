@@ -3,7 +3,7 @@ GQB
 
 Graphical Query Builder for [trails](https://github.com/danielkroeni/trails) (purely functional graph traversal language).
 
-GQB is build with AngularJS and allows you to easily create queries.
+GQB is build with AngularJS [online demo](http://gqb.ebrun.ch/).
 
  ![image][]
   [image]: http://gqb.ebrun.ch/img/gqb.png
