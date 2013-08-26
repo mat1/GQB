@@ -9,7 +9,7 @@ gqb.directives = angular.module('gqb.directives', []);
 gqb.services = angular.module('gqb.services', []);
 
 // Configuration
-app.constant('WEBSERVICE_URL', 'https://babelfish.cs.technik.fhnw.ch/bf/');
+app.constant('WEBSERVICE_URL', 'https://YOURWEBSERVICE');
 
 // Dsl Generator
 gqb.services.factory('DslGenerator', function(TrailsDslGenerator) {
