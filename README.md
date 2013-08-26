@@ -1,7 +1,7 @@
 GQB
 ===
 
-Graphical Query Builder for [trails](https://github.com/danielkroeni/trails)
+Graphical Query Builder for [trails](https://github.com/danielkroeni/trails) build with AngularJS.
 
 GQB allows you to easily create queries for trails [online demo](http://gqb.ebrun.ch/).
 
@@ -58,8 +58,11 @@ The quickest way to get started with your own schema is to create a JSON schema 
 }
 ```
 
-Save this schema under gqb/app/data/schema.json and open the admin page ([demo admin page](http://gqb.ebrun.ch/#/admin).
-Create a new layout and save the layout on the server. Go to the query page to use the new schema.
+Follow these steps to add a new schema:
+
+- Save this schema under gqb/app/data/schema.json and open the admin page [demo admin page](http://gqb.ebrun.ch/#/admin).
+- Save the layout on the server. 
+- Go to the query page to use the new schema.
 
 ## License
 GQB is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
