@@ -60,7 +60,7 @@ describe('Service', function() {
 
   var enums = [
     {
-      "name": "ch.finnova.babelfish.FinnovaSchema.Priority",
+      "name": "ch.schema.Priority",
       "values": [
         "High",
         "Kill",
@@ -194,7 +194,7 @@ describe('Service', function() {
 
       var dsl = TrailsDslGenerator.generateDsl(QueryBuilder.getQuery());
 
-      expect(dsl).toEqual('(V(Ticket) ~ (get(Ticket.RequestedPriority).filterV(_ == ch.finnova.babelfish.FinnovaSchema.Priority.withName("High")))).take(50)');
+      expect(dsl).toEqual('(V(Ticket) ~ (get(Ticket.RequestedPriority).filterV(_ == ch.schema.Priority.withName("High")))).take(50)');
     }));
 
   });

@@ -3,7 +3,7 @@
 /**
  * Main controller for the query page. Generates the query url and loads the query 
  * from the url when the query page is loaded. 
- * Compares the local schema with the babelfish web service.
+ * Compares the local schema with the schema from the web service.
  */
 gqb.ctrls.controller('QueryCtrl', function($scope, $location, QueryBuilder, DslGenerator, QM, TrailsWebService, SchemaComparator, Event) {
   $scope.showGraph = true;

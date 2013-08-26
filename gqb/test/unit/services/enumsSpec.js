@@ -5,7 +5,7 @@ describe('Service', function() {
 
   var enums = [
     {
-      "name": "ch.finnova.babelfish.FinnovaSchema.Priority",
+      "name": "ch.schema.Priority",
       "values": [
         "High",
         "Kill",
@@ -14,7 +14,7 @@ describe('Service', function() {
       ]
     },
     {
-      "name": "ch.finnova.babelfish.FinnovaSchema.TicketState",
+      "name": "ch.schema.TicketState",
       "values": [
         "Closed",
         "Delivered",
@@ -32,7 +32,7 @@ describe('Service', function() {
 
     it('gets enum by property type', inject(function(Enums) {
       var e = Enums.getEnumByPropertyType('Enum:Priority');
-      expect(e.name).toEqual('ch.finnova.babelfish.FinnovaSchema.Priority');
+      expect(e.name).toEqual('ch.schema.Priority');
       expect(e.values[0]).toEqual('High');
     }));
 
