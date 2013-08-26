@@ -2,11 +2,11 @@
 
 /**
  * Gets the layout information over the post request and stores the information
- * in the file babelfish.json. Creates the file, if the file does not exsists.
+ * in the file graph.json. Creates the file, if the file does not exsists.
  */
 
 $maxFileSize = 1024 * 512; // file size in bytes
-$file = '../data/babelfish.json';
+$file = '../data/graph.json';
 
 if (!is_writable($file)) {
   echo 'File ' . $file . ' is not writable! <br>';
