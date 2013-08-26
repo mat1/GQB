@@ -1,0 +1,54 @@
+<div ng-show="activeQmNode" ng-controller="PropertyFilterCtrl">
+  <div ng-switch on="isShowNode">
+    <h4 ng-switch-when="true">Property Filter - {{element.name}}</h4>
+    <h4 ng-switch-default>Property Filter - {{element.name}} - {{element.fromSchemaNode}} ~~> {{element.toSchemaNode}}</h4>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: isShowNode, disabled:isFormInvalid()}">
+      <a ng-click="showNode()">Node</a>
+    </li>
+    <li ng-show="hasEdgeProperties()" ng-class="{active: !isShowNode, disabled:isFormInvalid()}">
+      <a ng-click="showEdge()">Edge</a>
+    </li>
+  </ul>
+
+  <label>Property</label>
+  <form class="form-inline">
+    <fieldset>
+      <select ng-model="selectedProperty" ng-options="p.name for p in properties"></select>
+      <a class="btn btn-primary" title="Add property" ng-click="addProperty(selectedProperty)"><i class=" icon-plus icon-white"></i></a>
+    </fieldset>
+  </form>
+  <form name="filterForm">
+    <fieldset>
+      <!-- Properties -->
+      <div ng-repeat="filterProperty in filterProperties track by $index" >
+        <ng-form name="form">
+          <label>{{filterProperty.property.name}}</label>
+          <div class="form-inline control-group" ng-class="{error: form['\{\{$index\}\}'].$invalid}">
+            <button class="btn" type="button" title="AND or OR" ng-click="toggleBoolOpr(filterProperty)">{{filterProperty.boolOpr}}</button>
+
+            <input name="{{$index}}" ng-model="filterProperty.filter" type="text" 
+                   placeholder="{{filterProperty.placeholder}}" contains-rel-opr 
+                   property-type-check="{{filterProperty.property.propertyType}}" autofocus required 
+                   ng-change="saveFilter()">
+
+            <a class="btn" title="Remove property" ng-click="removeProperty(filterProperty)"><i class="icon-remove"></i></a>
+            
+            <div ng-show="filterProperty.possibleValues.length > 0" class="help-block info">
+              <p>Possible values: <span ng-repeat="value in filterProperty.possibleValues">{{value}}<span ng-hide="$last">, </span><span><p>
+            </div>
+            <div ng-show="form['\{\{$index\}\}'].$error.relopr" class="help-block">
+              <p>Filter must start with a relational operator <, <=, >, >=, =, !=</p>
+            </div>
+            <div ng-show="form['\{\{$index\}\}'].$error.typecheck" class="help-block">
+              <p>{{filterProperty.property.name}} must be from type {{filterProperty.property.propertyType}}.</p>
+            </div>
+          </div>
+        </ng-form>
+      </div>
+
+    </fieldset>
+  </form>
+</div> 

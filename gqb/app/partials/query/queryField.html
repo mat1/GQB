@@ -1,0 +1,26 @@
+<form class="form-inline" ng-controller="QueryFieldCtrl">
+  
+  <div class="input-append" ng-show="isGraphView()">
+    <span id="query" class="input-xxlarge uneditable-input">{{query}}</span>
+    <a class="btn" title="Edit query" ng-click="editQuery()"><i class="icon-edit"></i></a>
+  </div>
+  
+  <span ng-show="isQueryView()">
+    <textarea class="input-xxxlarge" rows="3" ng-model="query"></textarea>
+  </span>
+  <button class="btn btn-primary" title="Run query" type="button" ng-click="runQuery()">Run</button>
+  <button class="btn" type="button" title="Reset query" ng-click="reset()">Reset</button>
+
+  <span ng-show="isQueryView()">
+    <button class="btn" type="button" title="Back to graph view" ng-click="backToGraph()">Back to Graph</button>
+  </span>
+
+  <span ng-show="isGraphView()">
+    <select ng-model="history" ng-options="h.dsl for h in historyElements" ng-change="selectHistoryElement()">
+      <option value="">History</option>
+    </select>
+    <button ng-show="showGraph" class="btn" type="button" title="Hide graph" ng-click="toggleShowGraph()"><i class="icon-eye-close"></i></button>
+    <button ng-show="!showGraph" class="btn" type="button" title="Show graph" ng-click="toggleShowGraph()"><i class=" icon-eye-open"></i></button>
+  </span>
+
+</form>

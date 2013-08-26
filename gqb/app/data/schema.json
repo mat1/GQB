@@ -1,0 +1,144 @@
+{
+  "nodes": [
+    {
+      "name": "User",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        },
+        {
+          "name": "Birthday",
+          "propertyType": "DateTime"
+        }
+      ]
+    },
+    {
+      "name": "Site",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        },
+        {
+          "name": "Url",
+          "propertyType": "String"
+        }
+      ]
+    },
+    {
+      "name": "Status",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Text",
+          "propertyType": "String"
+        },
+        {
+          "name": "Published",
+          "propertyType": "DateTime"
+        }
+      ]
+    },
+    {
+      "name": "Place",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        }
+      ]
+    },
+    {
+      "name": "Group",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        },
+        {
+          "name": "Type",
+          "propertyType": "Enum:GroupType"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "knows",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "User"
+    },
+    {
+      "name": "likes",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Site"
+    },
+    {
+      "name": "memberOf",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Group"
+    },
+    {
+      "name": "posts",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Status"
+    },
+    {
+      "name": "comments",
+      "properties": [
+        {
+          "name": "Comment",
+          "propertyType": "String"
+        }
+      ],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Status"
+    },
+    {
+      "name": "publishs",
+      "properties": [],
+      "fromSchemaNode": "Status",
+      "toSchemaNode": "Place"
+    },
+    {
+      "name": "lives",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Place"
+    }
+  ],
+  "enums": [
+    {
+      "name": "GroupType",
+      "values": [
+        "Public",
+        "Private",
+        "Closed"
+      ]
+    }
+  ]
+}

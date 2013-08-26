@@ -1,0 +1,83 @@
+/* Query Field */
+#query-field button, .input-append, textarea, select {
+  margin-right: 10px;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  min-height: 20px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.breadcrumb li {
+  margin-right: 4px;
+}
+
+.breadcrumb .breadcrumb-true{
+  font-weight: bold;
+}
+
+/* Property Filter */
+#property-filter .info{
+  color: #3a87ad;
+}
+
+/* Result view */
+.result-view {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.result-view-controls {
+  line-height: 40px;
+  margin: 0px;
+}
+
+.result-view-controls .btn-group, .control-group {
+  margin-right: 20px;
+}
+
+.result-view ul {
+  list-style: none;
+  margin: 0px;
+}
+
+.result-container {
+  padding: 10px;
+}
+
+.result-loader {
+  margin-left: 10px;
+}
+
+#result-view {
+  float: left;
+}
+
+#elementInfo {
+  float: left;
+  margin-left: 20px;
+  background-color: #fff;
+  max-width: 40%;
+}
+
+#elementInfo h5{
+  margin-left: 8px;
+}
+
+/* Tree */
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

@@ -1,0 +1,16 @@
+<div class="container-fluid admin" ng-controller="AdminCtrl">
+  <div class="row-fluid admin-controls">
+    <div class="span12">
+      <button class="btn btn-primary" title="Save layout on server" type="button" ng-click="saveLayout()">Save layout</button>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span8">
+      <!-- Graph -->
+      <div id="graphcontainer" class="container-border">
+        <gqb-force-graph val="graph"></gqb-force-graph>
+      </div>
+      <p>Drag and drop to move the nodes. Press the save layout button to store the new layout on the server.</p>
+    </div>
+  </div>
+</div>

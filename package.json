@@ -1,0 +1,22 @@
+{
+  "author": "Matthias Brun",
+  "name": "gdsl",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-recess": "~0.3.3",
+    "grunt-htmlrefs": "~0.4.2",
+    "grunt-karma": "~0.4.4",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-sftp-deploy": "0.0.7",
+    "grunt-ftp-deploy": "0.0.9",
+    "grunt-plato": "~0.2.1"
+  }
+}

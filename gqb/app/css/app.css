@@ -1,0 +1,23 @@
+/* app css stylesheet */
+
+body {
+  padding-top: 60px;
+}
+
+/* Form erros */
+.help-block {
+  margin-top: 10px;
+}
+
+.container-border {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+iframe {
+  border: 0px;
+}
+
+.input-xxxlarge {
+  width: 800px;
+}

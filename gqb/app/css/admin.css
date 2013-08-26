@@ -1,0 +1,15 @@
+/* Hidden node */
+#hidden-node {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+}
+
+.admin-controls {
+  margin-bottom: 20px;
+}
+
+.admin #graphcontainer {
+  margin-bottom: 10px;
+}

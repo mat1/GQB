@@ -1,0 +1,165 @@
+/* Graph css */
+
+#graphcontainer {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+#graphcontainer svg {
+  height: 100%;
+  width: 100%;
+}
+
+/* drag and drop */
+.dragcontainer {
+  position: absolute;
+  left:0px;
+  top:0px;
+  width: 1400px;
+  height: 800px;
+}
+
+#graph {
+  height: 99%;
+  width: 99%;
+}
+
+#branch-sub-query-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#select-edge-dialog {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background: #fff;
+  padding: 10px;
+}
+
+/* Nodes */
+
+.nodes {
+  position: absolute;
+}
+
+.node {
+  position:absolute;
+  height: 45px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.node h6{
+  line-height: 45px;
+  margin: 0px;
+}
+
+.node a{
+  margin-bottom: 2px;
+  margin-left: 5px;
+}
+
+.node-not-reachable{
+  border-color: #ccc;
+  color: #ccc;
+  cursor: auto;
+}
+
+.node-follow {
+  color: #333;
+  background: #c1dec1;
+  background: linear-gradient(to bottom, #c1dec1, #97c897);
+  border-color: #97c897;
+}
+
+.node-sub-query {
+  color: #333;
+  background: #fcc982;
+  background: linear-gradient(to bottom, #fcc982, #fbb450);
+  border-color: #fbb450;
+}
+
+.node-branch {
+  color: #333;
+  background: linear-gradient(to bottom, #bee5f0, #8fdaf0);
+  border-color: #8fdaf0;
+}
+
+.node-active {
+  z-index: 10;
+}
+
+.node-active.node-follow {
+  background: #51a351;
+  background: linear-gradient(to bottom, #62c462, #51a351);
+  border-color: #51a351 ;
+}
+
+.node-active.node-sub-query {
+  background: #fbb450;
+  background: linear-gradient(to bottom, #fbb450, #f89406);
+  border-color: #f89406;
+}
+
+.node-active.node-branch {
+  background: #2f96b4;
+  background: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  border-color: #2f96b4;
+}
+
+/* Edges */
+
+.edge {
+  stroke: #aaa;
+  stroke-width: 5;
+}
+
+.edge-width-0 {
+  stroke-width: 1;
+}
+
+.edge-width-1 {
+  stroke-width: 2;
+}
+
+.edge-width-2 {
+  stroke-width: 3;
+}
+
+.edge-width-3 {
+  stroke-width: 4;
+}
+
+.edge-width-4 {
+  stroke-width: 5;
+}
+
+.edge-not-reachable {
+  stroke: #ddd;
+}
+
+.edge-follow {
+  stroke: #51a351;
+  stroke-width: 2px;
+}
+
+.edge-branch {
+  stroke: #2f96b4;
+  stroke-width: 2px;
+}
+
+.edge-sub-query {
+  stroke: #f89406;
+  stroke-width: 2px;
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" ng-app="gqb">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDSL</title>
+    <!-- ref:css css/app.css -->
+    <link rel="stylesheet" href="css/admin.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" href="css/graph.css"/>
+    <link rel="stylesheet" href="css/query.css"/>
+    <link rel="stylesheet" href="css/help.css"/>
+    <!-- endref -->
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavigationCtrl">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#/query" ng-click="resetQuery()">GQB</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li ng-class="navClass('query')"><a href="#/query" ng-click="resetQuery()">Query</a></li>
+              <li ng-class="navClass('admin')"><a href="#/admin">Admin</a></li>
+              <li ng-class="navClass('help')"><a href="#/help">Help</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div ui-view></div>
+    
+    <!-- ref:js lib/libs.js -->
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <script src="lib/d3/d3.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angularui/angular-ui-states.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+    <!-- endref -->
+
+    <!-- ref:js gdsl.js -->
+    <script src="js/app.js"></script>
+    
+    <script src="js/services/dslgenerator/trailsDslGenerator.js"></script>
+    <script src="js/services/dslgenerator/dummyDslGenerator.js"></script>
+    
+    <script src="js/services/path.js"></script>
+    <script src="js/services/propertyParser.js"></script>
+    <script src="js/services/propertyTypeChecker.js"></script>
+    <script src="js/services/queryBuilder.js"></script>
+    <script src="js/services/queryHelper.js"></script>
+    <script src="js/services/queryModel.js"></script>
+    <script src="js/services/jsonQueryParser.js"></script>
+    <script src="js/services/trailsWebService.js"></script>
+    <script src="js/services/resultHelper.js"></script>
+    <script src="js/services/localStorage.js"></script>
+    <script src="js/services/history.js"></script>
+    <script src="js/services/graph.js"></script>
+    <script src="js/services/forceGraphHelper.js"></script>
+    <script src="js/services/layoutStorage.js"></script>
+    <script src="js/services/schemaComparator.js"></script>
+    <script src="js/services/enums.js"></script>
+    <script src="js/services/event.js"></script>
+    
+    <script src="js/controllers/query/queryCtrl.js"></script>
+    <script src="js/controllers/query/graphCtrl.js"></script>
+    <script src="js/controllers/query/propertyFilterCtrl.js"></script>
+    <script src="js/controllers/query/breadcrumbsCtrl.js"></script>
+    <script src="js/controllers/query/queryFieldCtrl.js"></script>
+    <script src="js/controllers/query/resultViewCtrl.js"></script>
+    
+    <script src="js/controllers/navigation/navigationCtrl.js"></script>
+    
+    <script src="js/controllers/admin/adminCtrl.js"></script>
+    
+    <script src="js/directives/gqbTree.js"></script>
+    <script src="js/directives/gqbForceGraph.js"></script>
+    <script src="js/directives/gqbZoom.js"></script>
+    <script src="js/directives/gqbDrag.js"></script>
+    <script src="js/directives/typeCheck.js"></script>
+    <!-- endref -->
+  </body>
+</html>

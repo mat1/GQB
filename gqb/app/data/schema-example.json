@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "name": "A",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        }
+      ]
+    },
+    {
+      "name": "B",
+      "properties": [
+        {
+          "name": "Prio",
+          "propertyType": "Enum:Priority"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "C",
+      "properties": [],
+      "fromSchemaNode": "A",
+      "toSchemaNode": "B"
+    }
+  ],
+  "enums": [
+    {
+      "name": "Priority",
+      "values": [
+        "High",
+        "Kill",
+        "Low",
+        "Medium"
+      ]
+    }
+  ]
+}

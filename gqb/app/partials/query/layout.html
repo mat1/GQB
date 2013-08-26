@@ -1,0 +1,37 @@
+<div class="container-fluid" ng-controller="QueryCtrl">
+  <!-- Alert box -->
+  <div class="row-fluid" ng-show="!areSchemasEqual">
+    <div class="alert span8">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Warning!</strong> The schema from the babelfish web service and from the webserver are not equal.
+      Please save a new schema layout in the admin area.
+    </div>
+  </div>
+  <!-- Query Field  -->
+  <div id="query-field" class="row-fluid">
+    <div class="span12">
+      <div ui-view="queryField"></div>
+    </div>
+  </div>
+  <!-- Breadcrumbs -->
+  <div class="row-fluid" ng-show="showGraph">
+    <div class="span12">
+      <div ui-view="breadcrumbs"></div>
+    </div>
+  </div>
+  <!-- Graph -->
+  <div class="row-fluid" ng-show="showGraph">
+    <div class="span8">
+      <div ui-view="graph"></div>
+    </div>
+    <div class="span4">
+      <div ui-view="propertyFilter" id="property-filter"></div>
+    </div>
+  </div>
+  <!-- Result View -->
+  <div class="row-fluid">
+    <div class="span12">
+      <div ui-view="resultView"></div>
+    </div>
+  </div>
+</div>

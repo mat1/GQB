@@ -1,0 +1,232 @@
+{
+  "nodes": [
+    {
+      "name": "User",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        },
+        {
+          "name": "Birthday",
+          "propertyType": "DateTime"
+        }
+      ],
+      "hasLoop": true,
+      "width": 37,
+      "height": 45,
+      "left": 446,
+      "top": 285
+    },
+    {
+      "name": "Site",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        },
+        {
+          "name": "Url",
+          "propertyType": "String"
+        }
+      ],
+      "hasLoop": false,
+      "width": 32,
+      "height": 45,
+      "left": 626,
+      "top": 357
+    },
+    {
+      "name": "Status",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Text",
+          "propertyType": "String"
+        },
+        {
+          "name": "Published",
+          "propertyType": "DateTime"
+        }
+      ],
+      "hasLoop": false,
+      "width": 47,
+      "height": 45,
+      "left": 200,
+      "top": 285
+    },
+    {
+      "name": "Place",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        }
+      ],
+      "hasLoop": false,
+      "width": 42,
+      "height": 45,
+      "left": 205,
+      "top": 116
+    },
+    {
+      "name": "Group",
+      "properties": [
+        {
+          "name": "Key",
+          "propertyType": "Long"
+        },
+        {
+          "name": "Name",
+          "propertyType": "String"
+        },
+        {
+          "name": "Type",
+          "propertyType": "Enum:GroupType"
+        }
+      ],
+      "hasLoop": false,
+      "width": 44,
+      "height": 45,
+      "left": 623,
+      "top": 160
+    }
+  ],
+  "edges": [
+    {
+      "name": "knows",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "User",
+      "source": {
+        "x": 465,
+        "y": 307
+      },
+      "target": {
+        "x": 465,
+        "y": 307
+      },
+      "overlappings": 0
+    },
+    {
+      "name": "likes",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Site",
+      "source": {
+        "x": 465,
+        "y": 307
+      },
+      "target": {
+        "x": 642,
+        "y": 379
+      },
+      "overlappings": 0
+    },
+    {
+      "name": "memberOf",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Group",
+      "source": {
+        "x": 465,
+        "y": 307
+      },
+      "target": {
+        "x": 645,
+        "y": 182
+      },
+      "overlappings": 0
+    },
+    {
+      "name": "posts",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Status",
+      "source": {
+        "x": 465,
+        "y": 307
+      },
+      "target": {
+        "x": 224,
+        "y": 307
+      },
+      "overlappings": 1
+    },
+    {
+      "name": "comments",
+      "properties": [
+        {
+          "name": "Comment",
+          "propertyType": "String"
+        }
+      ],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Status",
+      "source": {
+        "x": 465,
+        "y": 307
+      },
+      "target": {
+        "x": 224,
+        "y": 307
+      },
+      "overlappings": 1
+    },
+    {
+      "name": "publishs",
+      "properties": [],
+      "fromSchemaNode": "Status",
+      "toSchemaNode": "Place",
+      "source": {
+        "x": 224,
+        "y": 307
+      },
+      "target": {
+        "x": 226,
+        "y": 139
+      },
+      "overlappings": 0
+    },
+    {
+      "name": "lives",
+      "properties": [],
+      "fromSchemaNode": "User",
+      "toSchemaNode": "Place",
+      "source": {
+        "x": 465,
+        "y": 307
+      },
+      "target": {
+        "x": 226,
+        "y": 139
+      },
+      "overlappings": 0
+    }
+  ],
+  "enums": [
+    {
+      "name": "GroupType",
+      "values": [
+        "Public",
+        "Private",
+        "Closed"
+      ]
+    }
+  ]
+}

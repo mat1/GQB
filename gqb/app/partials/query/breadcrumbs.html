@@ -1,0 +1,12 @@
+<div ng-controller="BreadcrumbsCtrl">
+  <ul class="breadcrumb">
+    <li ng-repeat="breadcrumb in breadcrumbs track by $index" class="breadcrumb-{{breadcrumb.isActive}}">
+      <span ng-switch on="breadcrumb.type">
+        <a ng-switch-when="node" ng-click="selectNode(breadcrumb)">{{breadcrumb.name}}</a>
+        <i ng-switch-when="edge" class="icon-arrow-right" title="{{breadcrumb.name}}"></i>
+        <span ng-switch-when="text">{{breadcrumb.name}}</span>
+      </span>
+    </li>
+  </ul>
+</div>
+

@@ -1,0 +1,62 @@
+<div id="graphcontainer" ng-controller="GraphCtrl" class="container-border">
+  <!-- Branch / SubQuery -->
+  <div id="branch-sub-query-controls" ng-show="activeNode">
+    <button class="btn" ng-show="canStartSubQuery()" ng-click="startSubQuery()" title="Start subquery">
+      <i class="icon-filter"></i> Subquery
+    </button>
+    <button class="btn" ng-show="isSubQueryMode" ng-click="finishSubQuery()" title="Stop subquery">
+      <i class="icon-filter"></i> Stop
+    </button>
+    <button class="btn" ng-show="canStartBranch()" ng-click="startBranch()" title="Start branch">
+      <i class="icon-random"></i> Branch
+    </button>
+    <button class="btn" ng-show="isBranchMode" ng-click="finishBranch()" ng-class="{disabled: !canFinishBranch()}" title="Stop branch">
+      <i class="icon-random"></i> Stop
+    </button>
+  </div>
+  <div class="dragcontainer" gqb-drag>
+    <!-- Nodes -->
+    <div class="nodes">
+      <div ng-repeat="node in nodes" ng-click="selectNode(node)"
+           class="node node-{{node.state}} node-{{node.mode}}" 
+           ng-style="{left: node.left, top: node.top}" >
+        <h6>{{node.name}}
+          <a ng-show="node.state == 'active'" 
+             ng-click="removeNode(node); $event.stopPropagation()" 
+             class="btn btn-mini" title="Remove node"><i class="icon-remove"></i></a>
+          <a ng-show="node.state == 'active' && node.hasLoop" 
+             ng-click="selectLoop(node); $event.stopPropagation()" 
+             class="btn btn-mini" title="Add loop edge to node"><i class="icon-refresh"></i></a>
+        </h6>
+      </div>
+    </div>
+    <!-- Edges -->
+    <svg id="graph">
+      <g class="edges">
+        <line ng-repeat="edge in edges" 
+              class="edge edge-{{edge.state}} edge-{{edge.mode}} edge-width-{{edge.overlappings}}"
+              ng-style="{'stroke-opacity': getEdgeOpacity(edge)}"
+              ng-attr-x1="{{edge.source.x}}" ng-attr-y1="{{edge.source.y}}"
+              ng-attr-x2="{{edge.target.x}}" ng-attr-y2="{{edge.target.y}}">
+          <title>{{edge.name}}</title>
+        </line>
+      </g>
+    </svg>  
+  </div>
+  <!-- Select Edge Dialog -->
+  <div id="select-edge-dialog" ng-show="selectEdges" ng-style="{left: selectLeft, top: selectTop}">
+    <h5>Select Edge</h5>
+    <p>{{selectedEdge.fromSchemaNode}} ~~> {{selectedEdge.toSchemaNode}}</p>
+    <form class="form-horizontal">
+      <fieldset>
+        <div class="control-group">
+          <select ng-model="selectedEdge" ng-options="e.name for e in selectEdges"></select>
+        </div>
+        <div class="control-group">
+          <button class="btn" type="button" ng-click="cancelSelectEdge()">Cancel</button>
+          <button class="btn btn-primary" type="button" ng-click="selectEdge(selectedEdge)">Save</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

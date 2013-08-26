@@ -1,0 +1,150 @@
+<div ng-controller="ResultViewCtrl" class="result-view" ng-show="paths !== null || error">
+  <!-- Result Controls -->
+  <div class="row-fluid result-view-controls-container">
+    <div class="span1">
+      <h4>Result
+        <img ng-show="queryIsRunning" src="./img/loader.gif" title="Query is running" class="result-loader">
+      </h4>
+    </div>
+    <div class="span11 result-view-controls">
+      <form class="form-inline" name="form">
+        <!-- Select View -->
+        <div class="btn-group">
+          <button class="btn" ng-click="setView('List')" ng-class="{active: showView == 'List'}" title="Show list view">List</button>
+          <button class="btn" ng-click="setView('Tree')" ng-class="{active: showView == 'Tree'}" title="Show tree view">Tree</button>
+          <button class="btn" ng-click="setView('GraphDot')" ng-class="{active: showView == 'GraphDot'}" title="Show graph dot view">Graph (DOT)</button>
+          <button class="btn" ng-click="setView('GraphSfdp')" ng-class="{active: showView == 'GraphSfdp'}" title="Show graph sftp view">Graph (SFDP)</button>
+        </div>
+        <span class="control-group" ng-show="showLimit" ng-class="{error: form.limit.$invalid}">
+          <label class="control-label" for="inputLimit">Limit:</label>
+          <span class="controls">
+            <input name="limit" type="text" class="input-small" ng-model="limit" ng-change="setLimit()" type-check="Long">
+            <span ng-show="form.limit.$error.typecheck" class="help-inline">
+              Limit must be from type Long.
+            </span>
+          </span>
+        </span>
+        <span class="control-group">
+          <button class="btn" ng-click="showDownloadDialog()" ng-show="!queryIsRunning">Download</button>
+        </span>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Result View -->
+  <div class="row-fluid">
+    <div class="span12 container-border result-container">
+      <div ng-switch on="showView" id="result-view">
+        <!-- Error Box -->
+        <pre ng-show="error">
+          {{error}}
+        </pre>
+        <h4 ng-show="paths.length === 0">Empty result</h4>
+        <!-- List View -->
+        <ul ng-switch-when="List">
+          <li ng-repeat="path in paths">
+            <span ng-repeat="element in path">
+              <span ng-switch on="isNode(element)">
+                <a ng-switch-when="true" ng-click="showNodeInfo(element.id)" title="{{element.key}}">{{element.nodeType}}</a>
+                <a ng-switch-default ng-click="showEdgeInfo(element.id)" title="Edge#{{element.id}}">{{getEdgeDirection(element)}}</a>
+              </span>
+            </span>
+          </li>
+        </ul>
+        <!-- Tree View -->
+        <div ng-switch-when="Tree">
+          <div ng-repeat="tree in trees">
+            <gdsl-tree val="tree"></gdsl-tree>
+          </div>
+        </div>
+        <!-- Graph View -->
+        <div ng-switch-when="GraphDot">
+          <iframe style="max-width: 100%" ng-src="{{graphUrlDot}}" type="image/svg+xml"></iframe>
+        </div>
+        <div ng-switch-when="GraphSfdp">
+          <iframe style="max-width: 100%" ng-src="{{graphUrlSfdp}}" type="image/svg+xml"></iframe>
+        </div>
+      </div>
+
+      <!-- Element Info Box -->
+      <div id="elementInfo" class="container-border" ng-show="elementInfo">
+        <h5>{{elementInfo.name}} ({{elementInfo.id}})</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Version[From]</th>
+              <th>Version[To]</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="(key, value) in elementInfo.idProperties">
+            <tr>
+              <td colspan="3">{{key}}</td>
+            </tr>
+            <tr>
+              <td colspan="3">{{value}}</td>
+            </tr>  
+          </tbody>
+          <tbody ng-repeat="(key, values) in elementInfo.properties">
+            <tr>
+              <td colspan="3">{{key}}</td>
+            </tr>
+            <tr ng-repeat="property in values">
+              <td>{{property.value}}</td><td>{{property.version.from}}</td><td>{{property.version.to}}</td>
+            </tr>  
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Download Result -->
+      <div class="modal" ng-class="{hide: hideDownloadDialog}">
+        <div class="modal-header">
+          <button type="button" class="close" ng-click="closeDownloadDialog()">&times;</button>
+          <h4>Download Result</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form" name="downloadForm">
+            <fieldset>
+              <div class="control-group">
+                <label>Format</label>
+                <label class="radio inline">
+                  <input type="radio" name="format" ng-model="download.format" value="pdf">PDF
+                </label>
+                <label class="radio inline">
+                  <input type="radio" name="format" ng-model="download.format" value="svg"/>SVG
+                </label>
+                <label class="radio inline">
+                  <input type="radio" name="format" ng-model="download.format" value="gv"/>DOT
+                </label>
+              </div>
+              <div class="control-group">
+                <label>Layout</label>
+                <label class="radio inline">
+                  <input type="radio" name="layout" ng-model="download.layout" value="dot"/>DOT
+                </label>
+                <label class="radio inline">
+                  <input type="radio" name="layout" ng-model="download.layout" value="sfdp"/>SFDP
+                </label>
+              </div>
+              <div class="control-group">
+                <label>Aggregated</label>
+                <label class="radio inline">
+                  <input type="radio" name="aggregated" ng-model="download.aggregated" value="true"/>Yes
+                </label>
+                <label class="radio inline">
+                  <input type="radio" name="aggregated" ng-model="download.aggregated" value="false"/>No
+                </label>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a class="btn" ng-click="closeDownloadDialog()">Close</a>
+          <a class="btn btn-primary" ng-href="{{getDownloadUrl()}}" target="_blank">Download</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
