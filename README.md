@@ -10,7 +10,6 @@ GQB is built with AngularJS [online demo](http://gqb.ebrun.ch/).
 
 It is possible to extend GQB for other query languages like SQL or [gremlin](https://github.com/tinkerpop/gremlin/wiki).
 
-
 ### Installation
 
 Requirements:
@@ -18,7 +17,6 @@ Requirements:
 - Webserver with PHP (>= 5)
 
 Clone the repository to your webserver folder. Enjoy!
-
 
 ### Use an other schema
 
